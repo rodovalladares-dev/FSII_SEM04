@@ -1,1 +1,104 @@
-/* You can add global styles to this file, and also import other style files */
+/* ----------------------------------- */
+/* Estilos Generales y Tipografía */
+/* ----------------------------------- */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7f6; /* Fondo gris claro */
+    color: #333; /* Texto principal oscuro */
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: flex-start; /* Alinea el contenido al inicio de la ventana (para evitar centrado vertical excesivo) */
+    min-height: 100vh;
+}
+
+h1 {
+    color: #007bff; /* Color azul primario para títulos */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* ----------------------------------- */
+/* Estilos del Contenedor de Formulario */
+/* ----------------------------------- */
+
+form {
+    background-color: #ffffff; /* Fondo blanco para el formulario */
+    padding: 30px;
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    width: 100%;
+    max-width: 400px; /* Ancho máximo para el formulario */
+}
+
+/* ----------------------------------- */
+/* Estilos de Campos de Formulario */
+/* ----------------------------------- */
+
+div {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block; /* Muestra la etiqueta encima del campo */
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Incluye padding y border en el ancho total */
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: #007bff; /* Resalta el borde al enfocar */
+    outline: none; /* Elimina el contorno predeterminado del navegador */
+}
+
+/* ----------------------------------- */
+/* Estilos de Botones */
+/* ----------------------------------- */
+
+button {
+    background-color: #007bff; /* Azul primario */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%; /* El botón ocupa todo el ancho */
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3; /* Azul más oscuro al pasar el mouse */
+}
+
+/* ----------------------------------- */
+/* Estilos de Enlaces y Párrafos */
+/* ----------------------------------- */
+
+p {
+    text-align: center;
+    margin-top: 15px;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none; /* Elimina el subrayado predeterminado */
+}
+
+a:hover {
+    text-decoration: underline; /* Muestra el subrayado al pasar el mouse */
+}

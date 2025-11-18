@@ -1,0 +1,179 @@
+    <h1>📋 Panel de Administración de Usuarios</h1>
+
+    <div id="form-container">
+        <h2>Crear/Editar Usuario</h2>
+        <form id="user-form">
+            <input type="email" id="user-email" placeholder="Email (ID Único)" required>
+            <input type="text" id="user-name" placeholder="Nombre" required>
+            <input type="password" id="user-password" placeholder="Password" required>
+            <select id="user-type" required>
+                <option value="" disabled selected>Selecciona Tipo</option>
+                <option value="admin">Administrador</option>
+                <option value="normal">Normal</option>
+            </select>
+            <button type="submit" id="submit-btn">Crear Usuario</button>
+        </form>
+    </div>
+
+    <hr>
+
+    <h2>Lista de Usuarios Registrados</h2>
+    <table id="user-table">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Nombre</th>
+                <th>Password</th>
+                <th>Tipo</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            </tbody>
+    </table>
+    <button id="btn-volver" onclick="volverAPaginaX()">
+        Volver a la Página Principal
+    </button>
+    <script src="js/panel.js">
+        // // Clave de localStorage requerida
+        // const STORAGE_KEY = 'usuarios_registrados';
+
+        // // Estado para saber si estamos editando
+        // let isEditing = false;
+        // let originalEmail = null;
+
+        // // Elementos del DOM
+        // const userForm = document.getElementById('user-form');
+        // const userEmailInput = document.getElementById('user-email');
+        // const userNameInput = document.getElementById('user-name');
+        // const userPasswordInput = document.getElementById('user-password');
+        // const userTypeSelect = document.getElementById('user-type');
+        // const submitButton = document.getElementById('submit-btn');
+        // const userTableBody = document.querySelector('#user-table tbody');
+
+        // // --- Funciones de LocalStorage ---
+
+        // /** Obtiene los usuarios del localStorage */
+        // function getUsers() {
+        //     const usersJSON = localStorage.getItem(STORAGE_KEY);
+        //     return usersJSON ? JSON.parse(usersJSON) : [];
+        // }
+
+        // /** Guarda el array de usuarios en localStorage */
+        // function saveUsers(users) {
+        //     localStorage.setItem(STORAGE_KEY, JSON.stringify(users));
+        // }
+
+        // // --- Funciones CRUD y UI ---
+
+        // /** Dibuja la tabla de usuarios */
+        // function renderTable() {
+        //     const users = getUsers();
+        //     userTableBody.innerHTML = ''; // Limpia la tabla
+
+        //     users.forEach(user => {
+        //         const row = userTableBody.insertRow();
+        //         row.insertCell(0).textContent = user.email;
+        //         row.insertCell(1).textContent = user.nombre;
+        //         // Advertencia: Almacenar passwords en texto plano en localStorage es INSEGURO
+        //         row.insertCell(2).textContent = user.password; 
+        //         row.insertCell(3).textContent = user.tipo;
+
+        //         // Crear botones de acción
+        //         const actionsCell = row.insertCell(4);
+                
+        //         const editButton = document.createElement('button');
+        //         editButton.className = 'action-btn edit-btn';
+        //         editButton.textContent = 'Modificar';
+        //         editButton.onclick = () => editUser(user.email);
+
+        //         const deleteButton = document.createElement('button');
+        //         deleteButton.className = 'action-btn delete-btn';
+        //         deleteButton.textContent = 'Eliminar';
+        //         deleteButton.onclick = () => deleteUser(user.email);
+
+        //         actionsCell.appendChild(editButton);
+        //         actionsCell.appendChild(deleteButton);
+        //     });
+        // }
+
+        // /** Reinicia el formulario y el estado de edición */
+        // function resetForm() {
+        //     userForm.reset();
+        //     isEditing = false;
+        //     originalEmail = null;
+        //     userEmailInput.removeAttribute('disabled'); // Habilita email para creación
+        //     submitButton.textContent = 'Crear Usuario';
+        //     userTypeSelect.value = '';
+        // }
+
+        // /** Maneja la creación y actualización de usuarios */
+        // userForm.onsubmit = function(event) {
+        //     event.preventDefault(); // Evita que la página se recargue
+
+        //     const email = userEmailInput.value;
+        //     const nombre = userNameInput.value;
+        //     const password = userPasswordInput.value;
+        //     const tipo = userTypeSelect.value;
+        //     let users = getUsers();
+
+        //     if (isEditing) {
+        //         // Modo EDICIÓN
+        //         users = users.map(user => 
+        //             user.email === originalEmail 
+        //                 ? { email: originalEmail, nombre, password, tipo } 
+        //                 : user
+        //         );
+        //         alert(`Usuario ${originalEmail} modificado correctamente.`);
+        //     } else {
+        //         // Modo CREACIÓN
+        //         if (users.some(user => user.email === email)) {
+        //             alert('Error: Ya existe un usuario con este email.');
+        //             return;
+        //         }
+        //         const newUser = { email, nombre, password, tipo };
+        //         users.push(newUser);
+        //         alert(`Usuario ${email} creado correctamente.`);
+        //     }
+
+        //     saveUsers(users);
+        //     resetForm();
+        //     renderTable();
+        // };
+
+        // /** Carga los datos de un usuario en el formulario para editar */
+        // function editUser(email) {
+        //     const users = getUsers();
+        //     const userToEdit = users.find(user => user.email === email);
+
+        //     if (userToEdit) {
+        //         isEditing = true;
+        //         originalEmail = email;
+
+        //         userEmailInput.value = userToEdit.email;
+        //         userNameInput.value = userToEdit.nombre;
+        //         userPasswordInput.value = userToEdit.password;
+        //         userTypeSelect.value = userToEdit.tipo;
+
+        //         userEmailInput.setAttribute('disabled', 'true'); // Bloquea el email (ID)
+        //         submitButton.textContent = `Guardar Modificación (${email})`;
+        //         window.scrollTo(0, 0); // Desplaza al formulario
+        //     }
+        // }
+
+        // /** Elimina un usuario por su Email (ID) */
+        // function deleteUser(email) {
+        //     if (confirm(`¿Estás seguro de que quieres eliminar al usuario con Email: ${email}?`)) {
+        //         let users = getUsers();
+        //         users = users.filter(user => user.email !== email);
+        //         saveUsers(users);
+        //         renderTable();
+        //         alert(`Usuario ${email} eliminado.`);
+        //         resetForm(); // Limpia el formulario por si estaba cargado
+        //     }
+        // }
+
+        // // Inicializa la tabla al cargar la página
+        // document.addEventListener('DOMContentLoaded', renderTable);
+    </script>
+

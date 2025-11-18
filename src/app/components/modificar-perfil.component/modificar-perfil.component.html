@@ -1,0 +1,29 @@
+<div class="card shadow-lg p-4">
+    <h1 class="card-title text-center text-info mb-4">Modificar Perfil</h1>
+    <form id="Formulario_Modificar_Perfil">
+        <h2 class="h5 text-info mb-3">Información Personal</h2>
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre Completo</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" required>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Correo Electrónico</label>
+            <input type="email" class="form-control-plaintext" id="email" name="email" required>
+        </div>
+
+        <h2 class="h5 text-danger mb-3 mt-4">Cambiar Contraseña (Opcional)</h2>
+        <p class="text-muted small">Deja los campos en blanco si no deseas cambiar tu contraseña.</p>
+        <div class="mb-3">
+            <label for="current_password" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="current_password" name="current_password">
+        </div>
+
+
+        <button id="btn_confirmar_cambios" class="btn btn-primary w-100 mt-3">Confirmar Cambios</button>
+    </form>
+    <script src="js/modificar_perfil.js"></script>
+    <hr>
+    <p class="text-center">
+        <a href="login.html" class="text-decoration-none">Volver a la Página Principal</a>
+    </p>
+</div>
